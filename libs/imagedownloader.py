@@ -68,10 +68,10 @@ class ImageNetDownloader:
             currentDir = os.getcwd()
             os.chdir(wnid)
             self.extractTarfile(filename)
-            print 'Download bbbox annotation from ' + url + ' to ' + filename
+            print('Download bbbox annotation from ' + url + ' to ' + filename)
             os.chdir(currentDir)
-        except Exception, error:
-            print 'Fail to download' + url
+        except Exception as error:
+            print('Fail to download' + url)
 
     def getImageURLsOfWnid(self, wnid):
         url = 'http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=' + str(wnid)
@@ -101,16 +101,16 @@ class ImageNetDownloader:
         for url in imageUrls:
             try:
                 self.download_file(url, wnid_urlimages_dir)
-            except Exception, error:
-                print 'Fail to download : ' + url
-                print str(error)
+            except Exception as error:
+                print('Fail to download : ' + url)
+                print(str(error))
 
     def downloadOriginalImages(self, wnid, username, accesskey):
         download_url = 'http://www.image-net.org/download/synset?wnid=%s&username=%s&accesskey=%s&release=latest&src=stanford' % (wnid, username, accesskey)
         try:
              download_file = self.download_file(download_url, self.mkWnidDir(wnid), wnid + '_original_images.tar')
-        except Exception, erro:
-            print 'Fail to download : ' + download_url
+        except Exception as error:
+            print('Fail to download : ' + download_url)
 
         currentDir = os.getcwd()
         extracted_folder = os.path.join(wnid, wnid + '_original_images')
@@ -119,5 +119,5 @@ class ImageNetDownloader:
         os.chdir(extracted_folder)
         self.extractTarfile(download_file)
         os.chdir(currentDir)
-        print 'Extract images to ' + extracted_folder
+        print('Extract images to ' + extracted_folder)
 

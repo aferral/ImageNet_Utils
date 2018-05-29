@@ -73,14 +73,14 @@ def autolableAllDir(path='.'):
         if 'Y'.lower() == bRemove:
             os.remove(args.file_test)
             if os.path.exists(args.file_test):
-                print 'Rmoeve fail'
+                print('Rmoeve fail')
 
     if args.file_train in subdirectories:
         bRemove = raw_input(args.file_train + 'has already existed, should remove it? Y or N:')
         if 'Y'.lower() == bRemove:
             os.remove(args.file_train)
             if os.path.exists(args.file_train):
-                print 'Rmoeve fail'
+                print('Rmoeve fail')
 
     label = 0
     label_file = open('synset_words.txt', 'w')
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     if args.label is None or args.dir is None:
         bAutoLabelAllDir = raw_input("Should label all dirs? Y or N :")
         if 'Y'.lower() == bAutoLabelAllDir:
-            print 'Automatically label all image in each folder under the dir'
+            print('Automatically label all image in each folder under the dir')
             autolableAllDir()
     else:
         labelImagesInDir(args.label, args.dir)

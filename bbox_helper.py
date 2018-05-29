@@ -69,7 +69,7 @@ class BBoxHelper:
                     count = count + 1
                     outPath = str(os.path.join(outputFolder, self.annotation_filename + '_box' + str(count) + '.JPEG'))
                     box.save(outPath)
-                    print 'save to ' + outPath
+                    print('save to ' + outPath)
 
     def get_BoudingBoxs(self):
         return self.rects
@@ -83,16 +83,16 @@ class BBoxHelper:
             for file in files:
                 if filename == file:
                     return os.path.join(root, file)
-        print filename + ' not found'
+        print(filename + ' not found')
         return None
 
 
 def saveAsBoudingBoxImg(xmlfile):
     bbhelper = BBoxHelper(xmlfile)
-    print bbhelper.findImagePath()
+    print(bbhelper.findImagePath())
     # Search image path according to bounding box xml, and crop it
     if shouldSaveBoundingBoxImg:
-        print bbhelper.get_BoudingBoxs()
+        print(bbhelper.get_BoudingBoxs())
         bbhelper.saveBoundBoxImage()
 
 if __name__ == '__main__':
