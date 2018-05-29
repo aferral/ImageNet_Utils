@@ -107,10 +107,8 @@ class ImageNetDownloader:
 
     def downloadOriginalImages(self, wnid, username, accesskey):
         download_url = 'http://www.image-net.org/download/synset?wnid=%s&username=%s&accesskey=%s&release=latest&src=stanford' % (wnid, username, accesskey)
-        try:
-             download_file = self.download_file(download_url, self.mkWnidDir(wnid), wnid + '_original_images.tar')
-        except Exception as error:
-            print('Fail to download : ' + download_url)
+        download_file = self.download_file(download_url, self.mkWnidDir(wnid), wnid + '_original_images.tar')
+
 
         currentDir = os.getcwd()
         extracted_folder = os.path.join(wnid, wnid + '_original_images')
